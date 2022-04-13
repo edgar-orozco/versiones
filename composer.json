@@ -1,0 +1,41 @@
+{
+    "name": "edgar-orozco/versiones",
+    "description": "Paquete para administrar ramas, versiones y tags en un proyecto git montado en un servidor web",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edgar Orozco",
+            "email": "9440039+edgar-orozco@users.noreply.github.com",
+            "homepage": "https://lxl.mx"
+        }
+    ],
+    "homepage": "https://github.com/edgar-orozco/versiones",
+    "keywords": ["Laravel", "versiones"],
+    "require": {
+        "illuminate/support": "~5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.7.27",
+        "orchestra/testbench": "~9"
+    },
+    "autoload": {
+        "psr-4": {
+            "EdgarOrozco\\Versiones\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EdgarOrozco\\Versiones\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EdgarOrozco\\Versiones\\VersionesServiceProvider"
+            ],
+            "aliases": {
+                "versiones": "EdgarOrozco\\Versiones\\Facades\\Versiones"
+            }
+        }
+    }
+}
