@@ -39,7 +39,7 @@ class versiones
      * @return array
      */
     public function getRamasRemotas(){
-        $sramas = $this->ejecuta('git branch -r');
+        $sramas = $this->ejecuta('git branch');
         $ramas = explode("\n", $sramas);
 
         $filtradas = [];
