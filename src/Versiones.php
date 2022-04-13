@@ -45,7 +45,9 @@ class versiones
         $filtradas = [];
         foreach($ramas as $idx => $r) {
             //if(strpos($r, $rama_actual) !== false) continue;
+            list($origin,$local) = explode("/", $r);
             $r = str_replace('*','',$r);
+            $r = str_replace($origin."/",'',$r);
             $filtradas[] = trim($r);
         }
 
