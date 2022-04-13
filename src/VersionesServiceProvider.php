@@ -39,7 +39,7 @@ class VersionesServiceProvider extends ServiceProvider
 
         // Register the service the package provides.
         $this->app->singleton('versiones', function ($app) {
-            return new versiones;
+            return new Versiones;
         });
     }
 
