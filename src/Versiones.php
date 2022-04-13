@@ -59,13 +59,11 @@ class versiones
      */
     public function cambiarRama($rama){
 
-        //$cfg = $this->ejecuta('git config --list');
+        list($remote, $local) = explode("/", $rama);
 
-        $fetch = $this->ejecuta('git fetch');
+        $chorem = $this->ejecuta('git checkout '.$rama);
 
-        $checkout = 'git checkout '.$rama;
-
-        $cho = $this->ejecuta('git checkout '.$rama);
+        $choloc = $this->ejecuta('git checkout '.$local);
 
         return;
     }
