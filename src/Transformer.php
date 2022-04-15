@@ -4,7 +4,7 @@ namespace EdgarOrozco\Versiones;
 
 class Transformer
 {
-    public function transformaArregloLogs($log, $max){
+    public function transformaArregloLogs($log, $max, $url){
 
         $lineas = [];
 
@@ -26,7 +26,7 @@ class Transformer
                 continue;
             }
 
-            $lineas[] = $this->transComment($linea);
+            $lineas[] = $this->transComment($linea, $url);
 
             if($idx > $max){
                 break;
@@ -45,9 +45,8 @@ class Transformer
     public function transDate($date){
         return "<div class=\"date\">".$date."</div>";
     }
-    public function transComment($comment){
-
-        $comment = preg_replace('/\(#(\d+)\)/', "<a href=\"https://github.com/edgar-orozco/signo-juntas/issues/$1\" target='_blank'>(#$1)</a>", $comment);
+    public function transComment($comment, $url){
+        $comment = preg_replace('/\(#(\d+)\)/', "<a href=\"${url}$1\" target='_blank'>(#$1)</a>", $comment);
         return "<div class=\"comment\">".$comment."</div>";
     }
 }

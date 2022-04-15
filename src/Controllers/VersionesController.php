@@ -75,7 +75,7 @@ class VersionesController extends Controller
     {
         list($rama_actual, $hash, $fecha) = Versiones::version();
         $ramas = Versiones::getRamasRemotas();
-        $log = $this->trans->transformaArregloLogs(Versiones::logPorRama($rama_actual),200);
+        $log = $this->trans->transformaArregloLogs(Versiones::logPorRama($rama_actual), 200, Versiones::repo());
         return view('EdgarOrozco::versiones.versiones', compact('ramas', 'rama_actual', 'hash', 'fecha', 'log'));
     }
 

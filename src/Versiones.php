@@ -104,4 +104,11 @@ class versiones
         }
         return $lineas;
     }
+
+    public function repo(){
+        $repo =  trim($this->ejecuta('git config --get remote.origin.url'));
+        $repo = preg_replace('/https:\/\/(.+)@/','https://', $repo);
+        $repo = str_replace('.git','/issues/', $repo);
+        return $repo;
+    }
 }
