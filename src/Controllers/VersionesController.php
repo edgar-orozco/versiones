@@ -6,7 +6,8 @@ use EdgarOrozco\Versiones\Facades\Versiones;
 use EdgarOrozco\Versiones\Transformer;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\ViewErrorBag;
+
 
 class VersionesController extends Controller
 {
@@ -56,7 +57,7 @@ class VersionesController extends Controller
      */
     public function version(){
         list($rama, $hash, $fecha) = Versiones::version();
-        return response()->json(['hash' => $hash, 'fecha' => $fecha, 'rama' => $rama]);
+        return response()->json(['hash' => $hash, 'fecha' => $fecha, 'rama' => $rama, 'errors'=>$this->errors]);
     }
 
     /**

@@ -14,13 +14,17 @@ class versiones
      */
     public function ejecuta($cmd)
     {
-        $process = new Process($cmd);
+        $process = Process::fromShellCommandline($cmd);
+
         $process->setWorkingDirectory(base_path());
-        $process->run();
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
+
+        try {
+            $process->mustRun();
+            return trim($process->getOutput());
+        } catch (ProcessFailedException $exception) {
+            return $exception->getMessage();
         }
-        return trim($process->getOutput());
+
     }
 
     /**

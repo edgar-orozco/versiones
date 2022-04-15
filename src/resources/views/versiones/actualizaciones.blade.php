@@ -1,5 +1,5 @@
-@extends('layouts.modulo')
-@section('style')
+@extends('layout.app-novue')
+@push('styles')
     <style>
         .commit {
             font-weight: bold;
@@ -22,7 +22,7 @@
             display: inline-block;
         }
     </style>
-@append
+@endpush
 @section('breadcrumbs')
     <ul class="breadcrumb breadcrumb-page">
         <li><a href="#">Inicio</a></li>
@@ -34,16 +34,16 @@
     <i class="fa fa-github"></i> Control de versiones </h1>
 @endsection
 
-@section('contenido-seccion')
-    <div class="panel panel-default">
+@section('content')
+    <div class="panel panel-default pt-4">
         <div class="panel-body">
 
             <ul class="nav nav-tabs">
-                <li><a href="/version?cmd=ramas"><i class="fa fa-code-fork"></i> Versiones</a></li>
-                <li class="active"><a href="/actualizaciones"><i class="fa fa-github"></i> Actualizaciones</a></li>
+                <li class="nav-item"><a href="/version?cmd=ramas" class="nav-link"><i class="fa fa-code-fork"></i> Versiones</a></li>
+                <li class="nav-item"><a href="/actualizaciones" class="nav-link active"><i class="fa fa-github"></i> Actualizaciones</a></li>
             </ul>
 
-            <h3>Rama actual: {{$rama_actual}} <small>| {{$hash}} | {{$fecha}}</small></h3>
+            <h3 class="mt-3">Rama actual: {{$rama_actual}} <small>| {{$hash}} | {{$fecha}}</small></h3>
 
             <hr>
 

@@ -3,6 +3,7 @@
 namespace EdgarOrozco\Versiones;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class VersionesServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,7 @@ class VersionesServiceProvider extends ServiceProvider
 
 
         if (! $this->app->routesAreCached()) {
-            require __DIR__.'/routes.php';
+            $this->registerRoutes();
         }
 
         // Publishing is only necessary when using the CLI.
@@ -82,5 +83,19 @@ class VersionesServiceProvider extends ServiceProvider
 
         // Registering package commands.
         // $this->commands([]);
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'middleware' => 'web'
+        ];
     }
 }
