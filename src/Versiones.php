@@ -62,9 +62,9 @@ class versiones
 
         list($remote, $local) = explode("/", $rama);
 
-        $chorem = $this->ejecuta('git checkout '.$rama);
+        $chorem = $this->ejecuta('git stash; git checkout '.$rama.'; git stash pop');
 
-        $choloc = $this->ejecuta('git checkout '.$local);
+        $choloc = $this->ejecuta('git stash; git checkout '.$local.'; git stash pop');
 
         return;
     }
